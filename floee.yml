@@ -1,0 +1,41 @@
+default:
+image:
+  # see releases here: https://gitlab.com/gitlab-org/terraform-images/container_registry?orderBy=UPDATED&sort=desc&search[]=releases&search[]=
+  name: "$CI_TEMPLATE_REGISTRY_HOST/gitlab-org/terraform-images/releases/1.5:v1.7.1"
+
+tfsec:
+  image:
+    # https://hub.docker.com/r/aquasec/tfsec-ci/tags
+    name: aquasec/tfsec-ci:v1.28.4
+    entrypoint:
+      - "/usr/bin/env"
+      - "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+  stage: validate
+  before_script:
+    - cd $TF_ROOT
+  script:
+    - tfsec
+
+tflint:
+  image:
+    # https://github.com/terraform-linters/tflint/pkgs/container/tflint
+    name: ghcr.io/terraform-linters/tflint:v0.50.0
+    entrypoint: [""]
+  stage: validate
+  before_script:
+    - cd $TF_ROOT
+  script:
+    - tflint -v
+    - tflint --init
+    - tflint
+
+infracost:
+  stage: test
+  image:
+    # https://hub.docker.com/r/infracost/infracost/tags
+    name: infracost/infracost:ci-0.10.31
+    entrypoint: [""] # Override since we're running commands below
+  before_script:
+    - cd ${TF_ROOT}
+  script:
+    - infracost breakdown --path . --terraform-var-file="./config/dev/eu-south-1/terraform.tfvars"
