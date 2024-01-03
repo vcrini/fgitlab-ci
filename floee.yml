@@ -1,3 +1,6 @@
+include:
+  - remote: https://raw.githubusercontent.com/vcrini/fgitlab-ci-template/main/template.yml
+
 default:
 image:
   # see releases here: https://gitlab.com/gitlab-org/terraform-images/container_registry?orderBy=UPDATED&sort=desc&search[]=releases&search[]=
