@@ -6,7 +6,7 @@
 include:
   # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Terraform/Base.latest.gitlab-ci.yml
   #- template: Terraform/Base.latest.gitlab-ci.yml
-  - remote: https://raw.githubusercontent.com/vcrini/fgitlab-ci/main/base.template.yml
+  - remote: https://raw.githubusercontent.com/vcrini/fgitlab-ci/0.0.2/base.template.yml
 
 stages:
   - validate
