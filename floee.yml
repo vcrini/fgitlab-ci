@@ -31,12 +31,14 @@ tflint:
     - tflint -v
     - tflint --init
     - tflint
+    - echo "CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX $CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX "
+    - echo "CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX $CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX"
 
 infracost:
   stage: test
   image:
     # https://hub.docker.com/r/infracost/infracost/tags
-    name: infracost/infracost:ci-0.10.31
+    name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/infracost/infracost:ci-0.10.31
     entrypoint: [""] # Override since we're running commands below
   before_script:
     - cd ${TF_ROOT}
