@@ -22,7 +22,9 @@ tfsec:
 tflint:
   image:
     # https://github.com/terraform-linters/tflint/pkgs/container/tflint
-    name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/ghcr.io/terraform-linters/tflint:v0.50.0
+    #name: ghcr.io/terraform-linters/tflint:v0.50.0
+    # docker pull shinomineko/tflint:v0.50.1
+    name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/shinomineko/tflint:v0.50.1
     entrypoint: [""]
   stage: validate
   before_script:
