@@ -9,7 +9,7 @@ image:
 tfsec:
   image:
     # https://hub.docker.com/r/aquasec/tfsec-ci/tags
-    name: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/aquasec/tfsec-ci:v1.28.4
+    name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/aquasec/tfsec-ci:v1.28.4
     entrypoint:
       - "/usr/bin/env"
       - "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
@@ -22,7 +22,7 @@ tfsec:
 tflint:
   image:
     # https://github.com/terraform-linters/tflint/pkgs/container/tflint
-    name: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/ghcr.io/terraform-linters/tflint:v0.50.0
+    name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/ghcr.io/terraform-linters/tflint:v0.50.0
     entrypoint: [""]
   stage: validate
   before_script:
@@ -36,7 +36,7 @@ infracost:
   stage: test
   image:
     # https://hub.docker.com/r/infracost/infracost/tags
-    name: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/infracost/infracost:ci-0.10.31
+    name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/infracost/infracost:ci-0.10.31
     entrypoint: [""] # Override since we're running commands below
   before_script:
     - cd ${TF_ROOT}
