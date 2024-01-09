@@ -41,7 +41,8 @@ infracost:
     #name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/infracost/infracost:ci-0.10.31
     #name: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/infracost/infracost:ci-0.10.31
     #image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/alpine:latest
-    name: gitlab.com/proclient-it/floee/dependency_proxy/containers/infracost/infracost:ci-0.10.31
+    name: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/infracost/infracost:ci-0.10.31
+    #name: gitlab.com/proclient-it/floee/dependency_proxy/containers/infracost/infracost:ci-0.10.31
     # gitlab.com/proclient-it/floee/dependency_proxy/containers
     entrypoint: [""] # Override since we're running commands below
   before_script:
