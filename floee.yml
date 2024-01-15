@@ -1,5 +1,5 @@
 include:
-  - remote: https://raw.githubusercontent.com/vcrini/fgitlab-ci-template/pipeline_merge_request_only/template.yml
+  - remote: https://raw.githubusercontent.com/vcrini/fgitlab-ci-template/0.1.1/template.yml
 
 default:
 image:
