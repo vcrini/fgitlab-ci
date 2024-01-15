@@ -17,13 +17,13 @@ fmt:
   extends: .terraform:fmt
   needs: []
   rules:
-    - !reference [.default_rules]
+    - !reference [.default_rules, rules]
 
 validate:
   extends: .terraform:validate
   needs: []
   rules:
-    - !reference [.default_rules]
+    - !reference [.default_rules, rules]
 
 tfsec:
   image:
@@ -39,7 +39,7 @@ tfsec:
   script:
     - tfsec
   rules:
-    - !reference [.default_rules]
+    - !reference [.default_rules, rules]
 
 tflint:
   image:
@@ -57,7 +57,7 @@ tflint:
     - tflint --init
     - tflint
   rules:
-    - !reference [.default_rules]
+    - !reference [.default_rules, rules]
 
 infracost:
   stage: test
@@ -71,7 +71,7 @@ infracost:
   script:
     - infracost breakdown --path . --terraform-var-file="./config/dev/eu-south-1/terraform.tfvars"
   rules:
-    - !reference [.default_rules]
+    - !reference [.default_rules, rules]
 
 plan:
   extends: .terraform:plan
@@ -83,4 +83,4 @@ plan:
     - echo CI_OPEN_MERGE_REQUESTS $CI_OPEN_MERGE_REQUESTS
     - echo CI_PIPELINE_SOURCE $CI_PIPELINE_SOURCE
   rules:
-    - !reference [.default_rules]
+    - !reference [.default_rules, rules]
