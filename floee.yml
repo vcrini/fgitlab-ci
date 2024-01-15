@@ -16,8 +16,8 @@ tfsec:
       - "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
   stage: validate
   before_script:
-    - 'echo "CI_COMMIT_BRANCH: $CI_COMMIT_BRANCH"'
-    - 'echo "CI_OPEN_MERGE_REQUESTS: $CI_OPEN_MERGE_REQUESTS"'
+    - "echo CI_COMMIT_BRANCH: $CI_COMMIT_BRANCH"
+    - "echo CI_OPEN_MERGE_REQUESTS: $CI_OPEN_MERGE_REQUESTS"
     - cd $TF_ROOT
   script:
     - tfsec
