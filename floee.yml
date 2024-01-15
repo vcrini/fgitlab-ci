@@ -87,6 +87,7 @@ plan:
     - echo CI_COMMIT_BRANCH $CI_COMMIT_BRANCH
     - echo CI_OPEN_MERGE_REQUESTS $CI_OPEN_MERGE_REQUESTS
     - echo CI_PIPELINE_SOURCE $CI_PIPELINE_SOURCE
+
 apply:
   extends: .terraform:apply
   dependencies:
