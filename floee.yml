@@ -88,7 +88,12 @@ infracost:
 #    - if: $CI_OPEN_MERGE_REQUESTS # Don't add it to a *branch* pipeline if it's already in a merge request pipeline.
 #      when: never
 apply:
-  extends: apply
+  extends: .terraform:apply
+  dependencies:
+    - plan
+  environment:
+    name: $TF_STATE_NAME
+    action: start
   before_script:
     - echo CI_COMMIT_BRANCH $CI_COMMIT_BRANCH
     - echo CI_OPEN_MERGE_REQUESTS $CI_OPEN_MERGE_REQUESTS
