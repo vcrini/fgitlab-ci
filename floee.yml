@@ -1,5 +1,5 @@
 include:
-  - remote: https://raw.githubusercontent.com/vcrini/fgitlab-ci-template/0.0.1/template.yml
+  - remote: https://raw.githubusercontent.com/vcrini/fgitlab-ci-template/rename_stages/template.yml
 
 default:
 image:
